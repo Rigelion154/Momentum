@@ -1,6 +1,6 @@
 /** Base **/
 .body {
-  font-family: "Arial", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   color: #fff;
   text-align: center;
@@ -16,8 +16,15 @@
 }
 
 .main {
+  position: relative;
   width: 100%;
   height: 40vh;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
 }
 
 .footer {
@@ -145,65 +152,81 @@ legend {
 }
 
 /** Layouts **/
-.main {
-  position: relative;
+/** Components **/
+.time {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 100px;
+  letter-spacing: 2px;
+}
+@media screen and (max-width: 600px) {
+  .time {
+    font-size: 46px;
+  }
+}
+
+.date {
+  font-size: 24px;
+}
+@media (max-width: 600px) {
+  .date {
+    font-size: 16px;
+  }
 }
 
 .slider-icon {
-  width: 15px;
-  height: 15px;
+  width: 32px;
+  height: 32px;
   position: absolute;
   top: 50%;
-  margin-top: -7px;
+  margin-top: -16px;
   cursor: pointer;
 }
 
 .slide-prev {
-  left: 1%;
+  left: 20px;
 }
 .slide-prev:before {
   display: block;
   content: "";
-  width: 5px;
-  height: 1px;
+  width: 18px;
+  height: 4px;
   background: lightgray;
-  transform: rotate(-41deg);
-  margin-bottom: 2px;
-  border-radius: 3px;
+  transform: rotate(-45deg);
+  margin-bottom: 7px;
+  border-radius: 4px;
 }
 .slide-prev:after {
   display: block;
   content: "";
-  width: 5px;
-  height: 1px;
+  width: 18px;
+  height: 4px;
   background: lightgray;
-  transform: rotate(41deg);
-  border-radius: 3px;
+  transform: rotate(45deg);
+  border-radius: 4px;
 }
 
 .slide-next {
-  right: 1%;
+  right: 15px;
 }
 .slide-next:before {
   display: block;
   content: "";
-  width: 5px;
-  height: 1px;
+  width: 18px;
+  height: 4px;
   background: lightgray;
-  transform: rotate(41deg);
-  margin-bottom: 2px;
-  border-radius: 3px;
-  margin-left: 8px;
+  transform: rotate(45deg);
+  margin-bottom: 7px;
+  border-radius: 4px;
 }
 .slide-next:after {
   display: block;
   content: "";
-  width: 5px;
-  height: 1px;
+  width: 18px;
+  height: 4px;
   background: lightgray;
-  transform: rotate(-41deg);
-  border-radius: 3px;
-  margin-left: 8px;
+  transform: rotate(-45deg);
+  border-radius: 5px;
 }
 
 .slide-next:hover:before,
