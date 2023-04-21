@@ -2,4 +2,8 @@
 @import "base/base";
 @import "base/reset";
 /** Layouts **/
-@import "layouts/main";
+
+/** Components **/
+@import "components/time";
+@import "components/date";
+@import "components/slider";
