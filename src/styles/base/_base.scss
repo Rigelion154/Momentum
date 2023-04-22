@@ -1,10 +1,10 @@
 .body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   color: #fff;
   text-align: center;
   min-height: 100vh;
-  background:  center / cover, rgba(0, 0, 0, 0.5);
+  background: center / cover, rgba(0, 0, 0, 0.5);
   background-blend-mode: multiply;
   transition: background-image 1s ease-in-out 0s;
 }
@@ -19,7 +19,7 @@
   height: 40vh;
   display: flex;
   flex-direction: column;
-  row-gap: 5px;
+  row-gap: 20px;
   justify-content: center;
   align-items: center;
   padding: 5px;

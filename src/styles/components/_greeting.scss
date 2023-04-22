@@ -1,0 +1,36 @@
+.greeting__container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 30px;
+  min-height: 48px;
+  width: 100%;
+  font-size: 40px;
+  @media (max-width: 1000px) {
+    flex-direction: column;
+  }
+  @media (max-width: 600px) {
+    font-size: 26px;
+  }
+}
+
+.greeting {
+  flex: 1;
+  text-align: right;
+}
+
+.greeting__input {
+  flex: 1;
+  color: #fff;
+
+  &::placeholder {
+    color: rgba($color: lightgray, $alpha: 0.9);
+  }
+  @media (max-width: 1000px) {
+    text-align: center;
+    &::placeholder {
+      text-align: center;
+    }
+  }
+}
