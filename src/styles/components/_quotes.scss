@@ -1,0 +1,15 @@
+.reload {
+  max-width: 32px;
+  cursor: pointer;
+}
+.quotes {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 10px;
+  @media (max-width: 600px) {
+    font-size: 12px;
+  }
+}

@@ -17,7 +17,7 @@
 .header__container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 20px;
 }
 
@@ -36,6 +36,12 @@
 .footer {
   width: 100%;
   height: 30vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  row-gap: 30px;
 }
 
 * {
@@ -296,7 +302,7 @@ legend {
 }
 
 .weather__sity {
-  max-width: 150px;
+  max-width: 180px;
   padding: 5px;
   font-size: 20px;
   line-height: 24px;
@@ -304,6 +310,25 @@ legend {
   border-width: 0px 0px 1px;
   border-bottom-style: solid;
   border-bottom-color: rgb(255, 255, 255);
+}
+
+.reload {
+  max-width: 32px;
+  cursor: pointer;
+}
+
+.quotes {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 10px;
+}
+@media (max-width: 600px) {
+  .quotes {
+    font-size: 12px;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

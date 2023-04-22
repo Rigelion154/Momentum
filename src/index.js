@@ -2,9 +2,14 @@ window.onload = function () {
   showNextSlideHandler();
   showPrevSlideHandler();
   setBackgroundImage();
+
   showTime();
+
   setWeatherSity();
   getWeather();
+
+  getQuotes();
+  reloadQuoteHandler();
 };
 localStorageHandler();
 
@@ -20,9 +25,9 @@ function getRandomNumber() {
 function setBackgroundImage() {
   const time = getTimeOfDay();
   const img = new Image();
-  img.src = `https://github.com/rolling-scopes-school/stage1-tasks/blob/assets/images/${time}/${String(
-    RANDOM_NUMBER
-  ).padStart(2, "0")}.jpg?raw=true`;
+  img.src = `https://github.com/rolling-scopes-school/stage1-tasks/blob/assets/images/${
+    time[0]
+  }/${String(RANDOM_NUMBER).padStart(2, "0")}.jpg?raw=true`;
   img.onload = () => {
     document.body.style.backgroundImage = `url(${img.src})`;
   };
@@ -71,18 +76,17 @@ function showDate() {
 /** Greeting **/
 
 function getTimeOfDay() {
-  const greeting = document.querySelector(".greeting");
   const date = new Date();
   const time = date.getHours();
-  if (time >= 6 && time < 12) return "morning";
-  if (time >= 12 && time <= 17) return "afternoon";
-  if (time > 17 && time < 24) return "evening";
-  if (time === 24 || time < 6) return "night";
+  if (time >= 6 && time < 12) return ["morning", time];
+  if (time >= 12 && time <= 17) return ["afternoon", time];
+  if (time > 17 && time < 24) return ["evening", time];
+  if (time === 24 || time < 6) return ["night", time];
 }
 
 function showTimeOfDay() {
   const time = getTimeOfDay();
-  document.querySelector(".greeting").textContent = `Good ${time}`;
+  document.querySelector(".greeting").textContent = `Good ${time[0]}`;
 }
 
 /** Set LocalStorage Name */
@@ -118,9 +122,13 @@ async function getWeather() {
   getWeatherHumidity(data);
 }
 function getWeatherIcon(data) {
+  const time = getTimeOfDay();
+  let typeOfIcon = "";
+  if ((time[1] >= 0 && time[1] <= 5) || time[1] >= 22) typeOfIcon = "-n";
+  else typeOfIcon = "-d";
   const weatherIcon = document.querySelector(".weather__icon");
   weatherIcon.className = "weather__icon owf";
-  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+  weatherIcon.classList.add(`owf-${data.weather[0].id}${typeOfIcon}`);
 }
 function getWeatherTemperature(data) {
   document.querySelector(".weather__temperature").textContent = `${Math.ceil(
@@ -146,4 +154,33 @@ function setWeatherSity() {
   document
     .querySelector(".weather__sity")
     .addEventListener("change", getWeather);
+}
+
+/** Quotes */
+
+async function getQuotes() {
+  let options = {
+    method: "GET",
+    headers: { "x-api-key": "WVYb0c8eSyyOYf/COaTGhQ==LxDRu876UbIxIRap" },
+  };
+
+  let url = "https://api.api-ninjas.com/v1/quotes?category=happiness";
+  fetch(url, options)
+    .then((res) => res.json())
+    .then((data) => {
+      setQuote(data);
+      setAuthor(data);
+    })
+    .catch((err) => {
+      console.log(`error ${err}`);
+    });
+}
+function setQuote(data) {
+  document.querySelector(".quote").textContent = `"${data[0].quote}"`;
+}
+function setAuthor(data) {
+  document.querySelector(".author").textContent = data[0].author;
+}
+function reloadQuoteHandler() {
+  document.querySelector(".reload").addEventListener("click", getQuotes);
 }
