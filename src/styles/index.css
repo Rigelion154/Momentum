@@ -290,6 +290,7 @@ legend {
 }
 
 .weather {
+  height: 100%;
   font-size: 16px;
   display: flex;
   flex-direction: column;
@@ -311,10 +312,14 @@ legend {
   border-bottom-style: solid;
   border-bottom-color: rgb(255, 255, 255);
 }
+.weather__sity::placeholder {
+  color: rgba(211, 211, 211, 0.9);
+}
 
 .reload {
   max-width: 32px;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .quotes {

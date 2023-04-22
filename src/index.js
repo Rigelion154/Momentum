@@ -1,3 +1,4 @@
+localStorageHandler();
 window.onload = function () {
   showNextSlideHandler();
   showPrevSlideHandler();
@@ -11,7 +12,6 @@ window.onload = function () {
   getQuotes();
   reloadQuoteHandler();
 };
-localStorageHandler();
 
 /** Slider ***/
 
@@ -91,35 +91,49 @@ function showTimeOfDay() {
 
 /** Set LocalStorage Name */
 
-function setLocalStorageName() {
+function setLocalStorage() {
   const name = document.querySelector(".greeting__input");
+  const sity = document.querySelector(".weather__sity");
   localStorage.setItem("name", name.value);
+  localStorage.setItem("sity", sity.value);
 }
 
 function getLocalStorage() {
   const name = document.querySelector(".greeting__input");
+  const sity = document.querySelector(".weather__sity");
   if (localStorage.getItem("name")) {
     name.value = localStorage.getItem("name");
+  }
+  if (localStorage.getItem("sity")) {
+    sity.value = localStorage.getItem("sity");
   }
 }
 
 function localStorageHandler() {
-  window.addEventListener("beforeunload", setLocalStorageName);
+  window.addEventListener("beforeunload", setLocalStorage);
   window.addEventListener("load", getLocalStorage);
 }
 
 /** Weather */
 
 async function getWeather() {
-  const sity = document.querySelector(".weather__sity");
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${sity.value}&lang=en&appid=2c7a15d52fecce72f232d83719afee73&units=metric`;
-  const res = await fetch(url);
-  const data = await res.json();
-  getWeatherIcon(data);
-  getWeatherTemperature(data);
-  getWeatherDescription(data);
-  getWeatherWind(data);
-  getWeatherHumidity(data);
+  if (localStorage.getItem("sity")) {
+    const sity = document.querySelector(".weather__sity");
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${sity.value}&lang=en&appid=2c7a15d52fecce72f232d83719afee73&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
+    getWeatherIcon(data);
+    getWeatherTemperature(data);
+    getWeatherDescription(data);
+    getWeatherWind(data);
+    getWeatherHumidity(data);
+  } else {
+    document.querySelector(".weather__icon").className = "weather__icon owf";
+    document.querySelector(".weather__temperature").textContent = "";
+    document.querySelector(".weather__description").textContent = "";
+    document.querySelector(".weather__wind").textContent = "";
+    document.querySelector(".weather__humidity").textContent = "";
+  }
 }
 function getWeatherIcon(data) {
   const time = getTimeOfDay();
@@ -151,9 +165,10 @@ function getWeatherHumidity(data) {
   ).textContent = `Humidity: ${Math.ceil(data.main.humidity)}%`;
 }
 function setWeatherSity() {
-  document
-    .querySelector(".weather__sity")
-    .addEventListener("change", getWeather);
+  document.querySelector(".weather__sity").addEventListener("change", () => {
+    setLocalStorage();
+    getWeather();
+  });
 }
 
 /** Quotes */
