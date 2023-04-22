@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="styles/index.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="styles/base/owfont-regular.css" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
@@ -17,12 +18,23 @@
     <title>Document</title>
   </head>
   <body class="body">
-    <header class="header"></header>
+    <header class="header header__container">
+      <div class="weather">
+        <input class="weather__sity" type="text" value="Orel" />
+        <i class="weather__icon owf"></i>
+        <div class="weather_container">
+          <span class="weather__temperature"></span>
+          <span class="weather__description"></span>
+        </div>
+        <div class="weather__wind"></div>
+        <div class="weather__humidity"></div>
+      </div>
+    </header>
     <main class="main">
       <time class="time"></time>
       <date class="date"></date>
       <div class="greeting__container">
-        <span class="greeting"></span>
+        <p class="greeting"></p>
         <input class="greeting__input" type="text" placeholder="[Enter name]" />
       </div>
       <div class="slider-icons">
