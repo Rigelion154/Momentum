@@ -1,19 +1,50 @@
 localStorageHandler();
+
+const playListArray = [
+  {
+    title: "Aqua Caelestis",
+    src: "./assets/sounds/Aqua Caelestis.mp3",
+    duration: "00:58",
+  },
+  {
+    title: "Ennio Morricone",
+    src: "./assets/sounds/Ennio Morricone.mp3",
+    duration: "01:37",
+  },
+  {
+    title: "River Flows In You",
+    src: "./assets/sounds/River Flows In You.mp3",
+    duration: "01:37",
+  },
+  {
+    title: "Summer Wind",
+    src: "./assets/sounds/Summer Wind.mp3",
+    duration: "01:50",
+  },
+];
+
 window.onload = function () {
+  /** Slider **/
   showNextSlideHandler();
   showPrevSlideHandler();
   setBackgroundImage();
-
+  /** Time **/
   showTime();
-
+  /** Weather **/
   setWeatherSity();
   getWeather();
-
+  /** Quotes **/
   getQuotes();
   reloadQuoteHandler();
+  /** Player **/
+  showPlayList();
+  playButtonHandler();
+  pauseButtonHandler();
+  nextTrackHandler();
+  prevTrackHandler();
 };
 
-/** Slider ***/
+/** Slider **/
 
 let RANDOM_NUMBER = getRandomNumber();
 
@@ -135,6 +166,7 @@ async function getWeather() {
     document.querySelector(".weather__humidity").textContent = "";
   }
 }
+
 function getWeatherIcon(data) {
   const time = getTimeOfDay();
   let typeOfIcon = "";
@@ -144,26 +176,31 @@ function getWeatherIcon(data) {
   weatherIcon.className = "weather__icon owf";
   weatherIcon.classList.add(`owf-${data.weather[0].id}${typeOfIcon}`);
 }
+
 function getWeatherTemperature(data) {
   document.querySelector(".weather__temperature").textContent = `${Math.ceil(
     data.main.temp
   )} °C`;
 }
+
 function getWeatherDescription(data) {
   document.querySelector(
     ".weather__description"
   ).textContent = `${data.weather[0].description}`;
 }
+
 function getWeatherWind(data) {
   document.querySelector(
     ".weather__wind"
   ).textContent = `Wind speed: ${Math.ceil(data.wind.speed)} m/s`;
 }
+
 function getWeatherHumidity(data) {
   document.querySelector(
     ".weather__humidity"
   ).textContent = `Humidity: ${Math.ceil(data.main.humidity)}%`;
 }
+
 function setWeatherSity() {
   document.querySelector(".weather__sity").addEventListener("change", () => {
     setLocalStorage();
@@ -190,12 +227,129 @@ async function getQuotes() {
       console.log(`error ${err}`);
     });
 }
+
 function setQuote(data) {
   document.querySelector(".quote").textContent = `"${data[0].quote}"`;
 }
+
 function setAuthor(data) {
   document.querySelector(".author").textContent = data[0].author;
 }
+
 function reloadQuoteHandler() {
   document.querySelector(".reload").addEventListener("click", getQuotes);
+}
+
+/** Player */
+
+let CURRENT_TRACK_INDEX = 0;
+
+function showPlayList() {
+  const playList = document.querySelector(".play-list");
+  playListArray.forEach((track) => {
+    const playListItem = document.createElement("li");
+    playListItem.className = "play-list__item";
+    playListItem.textContent = track.title;
+    playList.append(playListItem);
+  });
+}
+
+function playAudio() {
+  const audio = document.querySelector(".audio");
+  audio.src = playListArray[CURRENT_TRACK_INDEX].src;
+  audio.currentTime = 0;
+  audio.play();
+}
+
+function pauseAudio() {
+  const audio = document.querySelector(".audio");
+  audio.pause();
+}
+
+function playButtonHandler() {
+  document.querySelector(".play").addEventListener("click", () => {
+    removeButtonPlay();
+    showButtonPause();
+    showCurrentTrackItem();
+    playAudio();
+    console.log(CURRENT_TRACK_INDEX);
+  });
+}
+
+function pauseButtonHandler() {
+  document.querySelector(".pause").addEventListener("click", () => {
+    removeButtonPause();
+    showButtonPlay();
+    pauseAudio();
+  });
+}
+
+function nextTrackHandler() {
+  document.querySelector(".play-next").addEventListener("click", () => {
+    CURRENT_TRACK_INDEX++;
+    removePrevTrackItem();
+    if (CURRENT_TRACK_INDEX > playListArray.length - 1) CURRENT_TRACK_INDEX = 0;
+    removeButtonPlay();
+    showButtonPause();
+    showCurrentTrackItem();
+    playAudio();
+  });
+}
+
+function prevTrackHandler() {
+  document.querySelector(".play-prev").addEventListener("click", () => {
+    CURRENT_TRACK_INDEX--;
+    removeNextTrackItem();
+    if (CURRENT_TRACK_INDEX < 0) CURRENT_TRACK_INDEX = playListArray.length - 1;
+    removeButtonPlay();
+    showButtonPause();
+    showCurrentTrackItem();
+    playAudio();
+  });
+}
+
+function showCurrentTrackItem() {
+  const playListItem = document.querySelectorAll(".play-list__item");
+  playListItem[CURRENT_TRACK_INDEX].classList.add("active-track");
+}
+
+function removePrevTrackItem() {
+  const playListItem = document.querySelectorAll(".play-list__item");
+  if (CURRENT_TRACK_INDEX <= playListArray.length)
+    playListItem[CURRENT_TRACK_INDEX - 1].classList.remove("active-track");
+}
+
+function removeNextTrackItem() {
+  const playListItem = document.querySelectorAll(".play-list__item");
+  playListItem[CURRENT_TRACK_INDEX + 1].classList.remove("active-track");
+}
+
+function showButtonPlay() {
+  const play = document.querySelector(".play");
+  showButton(play);
+}
+
+function removeButtonPlay() {
+  const play = document.querySelector(".play");
+  removeButton(play);
+}
+
+function showButtonPause() {
+  const pause = document.querySelector(".pause");
+  showButton(pause);
+}
+
+function removeButtonPause() {
+  const pause = document.querySelector(".pause");
+  removeButton(pause);
+}
+
+function showButton(button) {
+  button.style.opacity = 1;
+  button.style.width = 50 + "px";
+}
+
+function removeButton(button) {
+  button.style.opacity = 0;
+  button.style.width = 0;
 }

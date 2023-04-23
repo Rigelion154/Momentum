@@ -5,6 +5,10 @@
   flex-direction: column;
   row-gap: 10px;
   align-items: flex-start;
+  @media screen and (max-width: 600px) {
+    font-size: 13px;
+    row-gap: 7px;
+  }
 }
 .weather__icon {
   font-size: 44px !important;
@@ -20,5 +24,8 @@
   border-bottom-color: rgb(255, 255, 255);
   &::placeholder {
     color: rgba($color: lightgray, $alpha: 0.9);
+  }
+  @media screen and (max-width: 600px) {
+    max-width: 130px;
   }
 }

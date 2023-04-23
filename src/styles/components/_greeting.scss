@@ -4,10 +4,10 @@
   justify-content: center;
   align-items: center;
   column-gap: 30px;
-  min-height: 48px;
+  // min-height: 48px;
   width: 100%;
   font-size: 39px;
-  @media (max-width: 600px) {
+  @media screen and (max-width: 600px) {
     font-size: 26px;
     flex-direction: column;
   }
@@ -26,10 +26,11 @@
   &::placeholder {
     color: rgba($color: lightgray, $alpha: 0.9);
   }
-  @media (max-width: 600px) {
+  @media screen and (max-width: 600px) {
     text-align: center;
     &::placeholder {
       text-align: center;
+      color: rgba(211, 211, 211, 0.9);
     }
   }
 }

@@ -16,8 +16,8 @@
 }
 .header__container {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: flex-start;
+  justify-content: space-between;
   padding: 20px;
 }
 
@@ -256,11 +256,10 @@ legend {
   justify-content: center;
   align-items: center;
   column-gap: 30px;
-  min-height: 48px;
   width: 100%;
   font-size: 39px;
 }
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .greeting__container {
     font-size: 26px;
     flex-direction: column;
@@ -280,12 +279,13 @@ legend {
 .greeting__input::placeholder {
   color: rgba(211, 211, 211, 0.9);
 }
-@media (max-width: 600px) {
+@media screen and (max-width: 600px) {
   .greeting__input {
     text-align: center;
   }
   .greeting__input::placeholder {
     text-align: center;
+    color: rgba(211, 211, 211, 0.9);
   }
 }
 
@@ -296,6 +296,12 @@ legend {
   flex-direction: column;
   row-gap: 10px;
   align-items: flex-start;
+}
+@media screen and (max-width: 600px) {
+  .weather {
+    font-size: 13px;
+    row-gap: 7px;
+  }
 }
 
 .weather__icon {
@@ -314,6 +320,11 @@ legend {
 }
 .weather__sity::placeholder {
   color: rgba(211, 211, 211, 0.9);
+}
+@media screen and (max-width: 600px) {
+  .weather__sity {
+    max-width: 130px;
+  }
 }
 
 .reload {
@@ -334,6 +345,75 @@ legend {
   .quotes {
     font-size: 12px;
   }
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  padding-top: 15px;
+}
+
+.play-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  align-items: flex-start;
+  color: rgba(211, 211, 211, 0.9);
+}
+
+.player__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 60px;
+  position: relative;
+}
+
+.play {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transition: opacity ease-in 0.5s;
+  opacity: 1;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.pause {
+  position: absolute;
+  width: 0;
+  height: 50px;
+  transition: opacity ease-in 0.5s;
+  opacity: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.play-prev {
+  width: 40px;
+  height: 40px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+@media screen and (max-width: 600px) {
+  .play-prev {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.play-next {
+  width: 40px;
+  height: 40px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+@media screen and (max-width: 600px) {
+  .play-next {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.active-track {
+  color: #fff;
 }
 
 /*# sourceMappingURL=index.css.map */

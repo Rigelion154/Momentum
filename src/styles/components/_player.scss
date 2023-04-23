@@ -1,0 +1,66 @@
+.player {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  padding-top: 15px;
+}
+
+.play-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  align-items: flex-start;
+  color: rgba($color: lightgray, $alpha: 0.9)
+}
+
+.player__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 60px;
+  position: relative;
+}
+
+.play {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transition: opacity ease-in 0.5s;
+  opacity: 1;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+}
+
+.pause {
+  position: absolute;
+  width: 0;
+  height: 50px;
+  transition: opacity ease-in 0.5s;
+  opacity: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+}
+
+.play-prev {
+  width: 40px;
+  height: 40px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  @media screen and (max-width: 600px) {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.play-next {
+  width: 40px;
+  height: 40px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  @media screen and (max-width: 600px) {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.active-track {
+  color: #fff;
+}
