@@ -377,7 +377,7 @@ legend {
 }
 @media screen and (max-width: 920px) {
   .weather__sity {
-    max-width: 100%;
+    max-width: 145px;
     font-size: 13px;
   }
 }
