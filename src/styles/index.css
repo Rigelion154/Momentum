@@ -20,6 +20,11 @@
   justify-content: space-between;
   padding: 20px;
 }
+@media screen and (max-width: 920px) {
+  .header__container {
+    padding: 10px;
+  }
+}
 
 .main {
   position: relative;
@@ -32,6 +37,12 @@
   align-items: center;
   padding: 20px;
 }
+@media screen and (max-width: 920px) {
+  .main {
+    padding: 10px;
+    row-gap: 0px;
+  }
+}
 
 .footer {
   width: 100%;
@@ -42,6 +53,12 @@
   align-items: center;
   justify-content: flex-end;
   row-gap: 30px;
+}
+@media screen and (max-width: 920px) {
+  .footer {
+    padding: 10px;
+    row-gap: 10px;
+  }
 }
 
 * {
@@ -171,7 +188,7 @@ legend {
   font-size: 100px;
   letter-spacing: 2px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 920px) {
   .time {
     font-size: 46px;
   }
@@ -180,7 +197,7 @@ legend {
 .date {
   font-size: 24px;
 }
-@media (max-width: 600px) {
+@media (max-width: 920px) {
   .date {
     font-size: 16px;
   }
@@ -194,6 +211,11 @@ legend {
   margin-top: -16px;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+@media (max-width: 920px) {
+  .slider-icon {
+    margin-top: 0;
+  }
 }
 
 .slide-prev {
@@ -259,7 +281,7 @@ legend {
   width: 100%;
   font-size: 39px;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 920px) {
   .greeting__container {
     font-size: 26px;
     flex-direction: column;
@@ -279,7 +301,7 @@ legend {
 .greeting__input::placeholder {
   color: rgba(211, 211, 211, 0.9);
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 920px) {
   .greeting__input {
     text-align: center;
   }
@@ -297,10 +319,42 @@ legend {
   row-gap: 10px;
   align-items: flex-start;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 920px) {
   .weather {
+    flex-direction: row;
+    column-gap: 20px;
+  }
+}
+@media (max-width: 570px) {
+  .weather {
+    flex-direction: column;
+    row-gap: 0px;
+  }
+}
+
+.weather__input {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  align-items: flex-start;
+}
+@media screen and (max-width: 920px) {
+  .weather__input {
     font-size: 13px;
     row-gap: 7px;
+  }
+}
+
+.weather__descriptions {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  align-items: flex-start;
+}
+@media screen and (max-width: 920px) {
+  .weather__descriptions {
+    font-size: 13px;
+    row-gap: 10px;
   }
 }
 
@@ -321,7 +375,7 @@ legend {
 .weather__sity::placeholder {
   color: rgba(211, 211, 211, 0.9);
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 920px) {
   .weather__sity {
     max-width: 130px;
   }
@@ -332,6 +386,11 @@ legend {
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+@media (max-width: 920px) {
+  .reload {
+    max-width: 25px;
+  }
+}
 
 .quotes {
   height: 60%;
@@ -341,9 +400,10 @@ legend {
   justify-content: center;
   row-gap: 10px;
 }
-@media (max-width: 600px) {
+@media (max-width: 920px) {
   .quotes {
     font-size: 12px;
+    row-gap: 5px;
   }
 }
 
@@ -352,6 +412,19 @@ legend {
   flex-direction: column;
   row-gap: 15px;
   padding-top: 15px;
+}
+@media (max-width: 920px) {
+  .player {
+    flex-direction: row;
+    column-gap: 20px;
+    padding-top: 0px;
+  }
+}
+@media (max-width: 570px) {
+  .player {
+    padding-top: 15px;
+    flex-direction: column;
+  }
 }
 
 .play-list {
@@ -393,7 +466,7 @@ legend {
   height: 40px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 920px) {
   .play-prev {
     width: 30px;
     height: 30px;
@@ -405,7 +478,7 @@ legend {
   height: 40px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 920px) {
   .play-next {
     width: 30px;
     height: 30px;

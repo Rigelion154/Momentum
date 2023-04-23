@@ -2,6 +2,9 @@
   max-width: 32px;
   cursor: pointer;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  @media (max-width: 920px) {
+    max-width: 25px;
+  }
 }
 .quotes {
   height: 60%;
@@ -10,7 +13,8 @@
   align-items: center;
   justify-content: center;
   row-gap: 10px;
-  @media (max-width: 600px) {
+  @media (max-width: 920px) {
     font-size: 12px;
+    row-gap: 5px;
   }
 }

@@ -17,6 +17,9 @@
     align-items: flex-start;
     justify-content: space-between;
     padding: 20px;
+    @media screen and (max-width: 920px) {
+      padding: 10px;
+    }
   }
 }
 
@@ -30,6 +33,10 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  @media screen and (max-width: 920px) {
+    padding: 10px;
+    row-gap: 0px;
+  }
 }
 
 .footer {
@@ -41,4 +48,8 @@
   align-items: center;
   justify-content: flex-end;
   row-gap: 30px;
+  @media screen and (max-width: 920px) {
+    padding: 10px;
+    row-gap: 10px;
+  }
 }
