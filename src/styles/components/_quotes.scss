@@ -16,6 +16,8 @@
   align-items: center;
   justify-content: center;
   row-gap: 10px;
+  overflow: hidden;
+  transition: opacity ease-in 0.5s;
   @media (max-width: 920px) {
     font-size: 12px;
     row-gap: 5px;
