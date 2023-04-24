@@ -1,3 +1,6 @@
+/** Abstracts **/
+@import "abstracts/variables";
+
 /** Base **/
 @import "base/base";
 @import "base/reset";
@@ -11,3 +14,4 @@
 @import "components/weather";
 @import "components/quotes";
 @import "components/player";
+@import "components/settings";

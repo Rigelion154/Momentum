@@ -1,4 +1,5 @@
 localStorageHandler();
+localStoragePluginsHandler();
 
 const playListArray = [
   {
@@ -42,6 +43,14 @@ window.onload = function () {
   pauseButtonHandler();
   nextTrackHandler();
   prevTrackHandler();
+  /** Settings */
+  settingsHandler();
+  showAudioItem();
+  showAudioItemHandler();
+  showWeatherItem();
+  showWeatherItemHandler();
+  showQuotesItem();
+  showQuotesItemHandler();
 };
 
 /** Slider **/
@@ -120,7 +129,44 @@ function showTimeOfDay() {
   document.querySelector(".greeting").textContent = `Good ${time[0]}`;
 }
 
-/** Set LocalStorage Name */
+/** Set LocalStorage */
+function setLocalStoragePlugins() {
+  const audioitem = document.querySelector(".checkbox-audio");
+  const weatheritem = document.querySelector(".checkbox-weather");
+  const quotesitem = document.querySelector(".checkbox-quotes");
+
+  if (audioitem.checked) {
+    localStorage.setItem("audio", true);
+  } else localStorage.setItem("audio", false);
+
+  if (weatheritem.checked) {
+    localStorage.setItem("weather", true);
+  } else localStorage.setItem("weather", false);
+
+  if (quotesitem.checked) {
+    localStorage.setItem("quotes", true);
+  } else localStorage.setItem("quotes", false);
+}
+
+function getLocalStoragePlugins() {
+  const audioitem = document.querySelector(".checkbox-audio");
+  const weatheritem = document.querySelector(".checkbox-weather");
+  const quotesitem = document.querySelector(".checkbox-quotes");
+
+  if (localStorage.getItem("audio") === "true") audioitem.checked = true;
+  if (localStorage.getItem("audio") === "false") audioitem.checked = false;
+
+  if (localStorage.getItem("weather") === "true") weatheritem.checked = true;
+  if (localStorage.getItem("weather") === "false") weatheritem.checked = false;
+
+  if (localStorage.getItem("quotes") === "true") quotesitem.checked = true;
+  if (localStorage.getItem("quotes") === "false") quotesitem.checked = false;
+}
+
+function localStoragePluginsHandler() {
+  window.addEventListener("beforeunload", setLocalStoragePlugins);
+  window.addEventListener("load", getLocalStoragePlugins);
+}
 
 function setLocalStorage() {
   const name = document.querySelector(".greeting__input");
@@ -237,7 +283,11 @@ function setAuthor(data) {
 }
 
 function reloadQuoteHandler() {
-  document.querySelector(".reload").addEventListener("click", getQuotes);
+  const reloadButton = document.querySelector(".reload");
+  reloadButton.addEventListener("click", () => {
+    reloadButton.classList.toggle("rotate");
+    getQuotes();
+  });
 }
 
 /** Player */
@@ -352,4 +402,51 @@ function showButton(button) {
 function removeButton(button) {
   button.style.opacity = 0;
   button.style.width = 0;
+}
+
+/** Settings */
+
+function settingsHandler() {
+  const gear = document.querySelector(".settings__icon");
+  gear.addEventListener("click", () => {
+    gear.classList.toggle("rotate");
+    document.querySelector(".settings__menu").classList.toggle("open");
+    document.querySelector(".settings__items").classList.toggle("open");
+  });
+}
+
+function showAudioItemHandler() {
+  document
+    .querySelector(".label__input-audio")
+    .addEventListener("click", showAudioItem);
+}
+
+function showWeatherItemHandler() {
+  document
+    .querySelector(".label__input-weather")
+    .addEventListener("click", showWeatherItem);
+}
+
+function showQuotesItemHandler() {
+  document
+    .querySelector(".label__input-quotes")
+    .addEventListener("click", showQuotesItem);
+}
+
+function showAudioItem() {
+  if (!document.querySelector(".checkbox-audio").checked) {
+    document.querySelector(".player").classList.add("closed");
+  } else document.querySelector(".player").classList.remove("closed");
+}
+
+function showWeatherItem() {
+  if (!document.querySelector(".checkbox-weather").checked) {
+    document.querySelector(".weather").classList.add("closed");
+  } else document.querySelector(".weather").classList.remove("closed");
+}
+
+function showQuotesItem() {
+  if (!document.querySelector(".checkbox-quotes").checked) {
+    document.querySelector(".quotes").classList.add("closed");
+  } else document.querySelector(".quotes").classList.remove("closed");
 }

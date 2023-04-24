@@ -12,6 +12,11 @@
     padding-top: 15px;
     flex-direction: column;
   }
+  &.closed {
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
 }
 
 .play-list {
@@ -19,7 +24,7 @@
   flex-direction: column;
   row-gap: 5px;
   align-items: flex-start;
-  color: rgba($color: lightgray, $alpha: 0.9);
+  color: $color-secondary-mod;
 }
 
 .player__controls {
@@ -69,5 +74,5 @@
 }
 
 .active-track {
-  color: #fff;
+  color: $color-primary;
 }

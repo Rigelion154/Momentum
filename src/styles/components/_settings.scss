@@ -1,0 +1,73 @@
+// .settings {
+// }
+
+.settings__menu {
+  position: absolute;
+  left: 1%;
+  bottom: 5%;
+  width: 0px;
+  height: 0px;
+  background: $color-secondary-mod;
+  border-radius: 20px;
+  opacity: 0;
+  transition: all ease-in 0.5s;
+  padding: 20px;
+  overflow: hidden;
+  &.open {
+    opacity: 1;
+    width: 200px;
+    height: 145%;
+  }
+}
+
+.settings__icon {
+  position: absolute;
+  bottom: 10%;
+  left: 2%;
+  cursor: pointer;
+  transition: transform ease 1s;
+  max-width: 40px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  @media screen and (max-width: 450px) {
+    max-width: 30px;
+  }
+}
+
+.settings__items {
+  font-size: 28px;
+  color: $color-primary;
+  &.open {
+    height: 100%;
+  }
+}
+.settings__item {
+  text-align: start;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.settings__checkbox {
+  display: none;
+}
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  font-size: 24px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid $color-primary;
+  transform: translate(-10px, 0px);
+}
+.checkbox::before {
+  position: absolute;
+  content: "✔";
+  color: lightgreen;
+  top: 50%;
+  left: 50%;
+  transform: translate(-8px, -18px);
+  opacity: 0;
+}
+.settings__checkbox:checked + .checkbox::before {
+  opacity: 1;
+}

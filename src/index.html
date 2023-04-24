@@ -19,7 +19,7 @@
   </head>
   <body class="body">
     <header class="header header__container">
-      <div class="player">
+      <div class="player closed">
         <audio src="" class="audio"></audio>
         <div class="player__controls">
           <img
@@ -37,13 +37,9 @@
         </div>
         <ul class="play-list"></ul>
       </div>
-      <div class="weather">
+      <div class="weather closed">
         <div class="weather__input">
-          <input
-            class="weather__sity"
-            type="text"
-            placeholder="[Enter your Сity]"
-          />
+          <input class="weather__sity" type="text" placeholder="[Enter Сity]" />
           <i class="weather__icon owf"></i>
         </div>
         <div class="weather__descriptions">
@@ -69,8 +65,49 @@
       </div>
     </main>
     <footer class="footer">
-      <img src="./assets/svg/reload.svg" alt="reload-button" class="reload" />
-      <div class="quotes">
+      <div class="settings">
+        <div class="settings__menu">
+          <ul class="settings__items">
+            <li class="settings__item">
+              <label class="label__input-audio"
+                ><input
+                  class="settings__checkbox checkbox-audio"
+                  type="checkbox"
+                  checked
+                />
+                <span class="checkbox"></span><span>Audio</span></label
+              >
+            </li>
+            <li class="settings__item">
+              <label class="label__input-weather"
+                ><input
+                  class="settings__checkbox checkbox-weather"
+                  type="checkbox"
+                  checked
+                />
+                <span class="checkbox"></span><span>Weather</span></label
+              >
+            </li>
+            <li class="settings__item">
+              <label class="label__input-quotes">
+                <input
+                  class="settings__checkbox checkbox-quotes"
+                  type="checkbox"
+                  checked
+                /><span class="checkbox"></span><span>Quotes</span></label
+              >
+            </li>
+          </ul>
+        </div>
+        <img
+          src="./assets/icons/gear-icon.png"
+          alt="gear-icon"
+          class="settings__icon"
+        />
+      </div>
+
+      <div class="quotes closed">
+        <img src="./assets/svg/reload.svg" alt="reload-button" class="reload" />
         <p class="quote"></p>
         <p class="author"></p>
       </div>

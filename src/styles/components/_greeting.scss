@@ -20,17 +20,16 @@
 
 .greeting__input {
   flex: 1;
-  color: #fff;
+  color: $color-primary;
   max-width: 50%;
 
   &::placeholder {
-    color: rgba($color: lightgray, $alpha: 0.9);
+    color: $color-secondary-mod;
   }
   @media screen and (max-width: 920px) {
     text-align: center;
     &::placeholder {
       text-align: center;
-      color: rgba(211, 211, 211, 0.9);
     }
   }
 }
