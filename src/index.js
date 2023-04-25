@@ -415,6 +415,16 @@ function settingsHandler() {
   });
 }
 
+// const div = document.querySelector(".settings__menu");
+
+// document.addEventListener("click", (e) => {
+//   const withinBoundaries = e.composedPath().includes(div);
+
+//   if (!withinBoundaries) {
+//     div.classList.toggle("open");
+//   }
+// });
+
 function showAudioItemHandler() {
   document
     .querySelector(".label__input-audio")

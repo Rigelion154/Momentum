@@ -48,10 +48,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  row-gap: 30px;
   @media screen and (max-width: 920px) {
     padding: 10px;
-    row-gap: 10px;
   }
 }
 
