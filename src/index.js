@@ -406,24 +406,32 @@ function removeButton(button) {
 
 /** Settings */
 
+// function settingsHandler() {
+//   const gear = document.querySelector(".settings__icon");
+//   gear.addEventListener("click", () => {
+//     gear.classList.toggle("rotate");
+//     document.querySelector(".settings__menu").classList.toggle("open");
+//     document.querySelector(".settings__items").classList.toggle("open");
+//   });
+// }
+
 function settingsHandler() {
+  const div = document.querySelector(".settings__menu");
   const gear = document.querySelector(".settings__icon");
-  gear.addEventListener("click", () => {
-    gear.classList.toggle("rotate");
-    document.querySelector(".settings__menu").classList.toggle("open");
-    document.querySelector(".settings__items").classList.toggle("open");
+  document.addEventListener("click", (e) => {
+    const withinBoundaries = e.composedPath().includes(div);
+    const withinBoundariesGear = e.composedPath().includes(gear);
+    if (withinBoundariesGear) {
+      gear.classList.toggle("rotate");
+      div.classList.toggle("open");
+    } else if (div.classList.contains("open")) {
+      if (!withinBoundaries) {
+        gear.classList.toggle("rotate");
+        div.classList.remove("open");
+      }
+    }
   });
 }
-
-// const div = document.querySelector(".settings__menu");
-
-// document.addEventListener("click", (e) => {
-//   const withinBoundaries = e.composedPath().includes(div);
-
-//   if (!withinBoundaries) {
-//     div.classList.toggle("open");
-//   }
-// });
 
 function showAudioItemHandler() {
   document
