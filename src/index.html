@@ -1,117 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="styles/index.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="styles/base/owfont-regular.css" rel="stylesheet" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <title>Momentum</title>
-  </head>
-  <body class="body">
-    <header class="header header__container">
-      <div class="player closed">
-        <audio src="" class="audio"></audio>
-        <div class="player__controls">
-          <img
-            class="play-prev"
-            src="./assets/svg/play-prev.svg"
-            alt="prev-button"
-          />
-          <img class="play" src="./assets/svg/play.svg" alt="play-button" />
-          <img class="pause" src="./assets/svg/pause.svg" alt="pause-button" />
-          <img
-            class="play-next"
-            src="./assets/svg/play-next.svg"
-            alt="next-button"
-          />
-        </div>
-        <ul class="play-list"></ul>
+<head>
+  <meta charset="UTF-8"/>
+  <meta
+    name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+  />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <link rel="stylesheet" href="styles/index.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="styles/base/owfont-regular.css" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <title>Momentum</title>
+</head>
+<body class="body">
+<header class="header header__container">
+  <div class="player closed">
+    <audio src="" class="audio"></audio>
+    <div class="player__controls">
+      <img
+        class="play-prev"
+        src="./assets/svg/play-prev.svg"
+        alt="prev-button"
+      />
+      <img class="play" src="./assets/svg/play.svg" alt="play-button"/>
+      <img class="pause" src="./assets/svg/pause.svg" alt="pause-button"/>
+      <img
+        class="play-next"
+        src="./assets/svg/play-next.svg"
+        alt="next-button"
+      />
+    </div>
+    <ul class="play-list"></ul>
+  </div>
+  <div class="weather closed">
+    <div class="weather__input">
+      <input class="weather__sity" type="text" placeholder="[Enter City]"/>
+      <i class="weather__icon owf"></i>
+    </div>
+    <div class="weather__descriptions">
+      <div class="weather_container">
+        <span class="weather__temperature"></span>
+        <span class="weather__description"></span>
       </div>
-      <div class="weather closed">
-        <div class="weather__input">
-          <input class="weather__sity" type="text" placeholder="[Enter Сity]" />
-          <i class="weather__icon owf"></i>
-        </div>
-        <div class="weather__descriptions">
-          <div class="weather_container">
-            <span class="weather__temperature"></span>
-            <span class="weather__description"></span>
-          </div>
-          <div class="weather__wind"></div>
-          <div class="weather__humidity"></div>
-        </div>
-      </div>
-    </header>
-    <main class="main">
-      <time class="time"></time>
-      <date class="date"></date>
-      <div class="greeting__container">
-        <p class="greeting"></p>
-        <input class="greeting__input" type="text" placeholder="[Enter name]" />
-      </div>
-      <div class="slider-icons">
-        <button class="slider-icon slide-prev"></button>
-        <button class="slider-icon slide-next"><span class=""></span></button>
-      </div>
-    </main>
-    <footer class="footer">
-      <div class="settings">
-        <div class="settings__menu">
-          <ul class="settings__items">
-            <li class="settings__item">
-              <label class="label__input-audio"
-                ><input
-                  class="settings__checkbox checkbox-audio"
-                  type="checkbox"
-                  checked
-                />
-                <span class="checkbox"></span><span>Audio</span></label
-              >
-            </li>
-            <li class="settings__item">
-              <label class="label__input-weather"
-                ><input
-                  class="settings__checkbox checkbox-weather"
-                  type="checkbox"
-                  checked
-                />
-                <span class="checkbox"></span><span>Weather</span></label
-              >
-            </li>
-            <li class="settings__item">
-              <label class="label__input-quotes">
-                <input
-                  class="settings__checkbox checkbox-quotes"
-                  type="checkbox"
-                  checked
-                /><span class="checkbox"></span><span>Quotes</span></label
-              >
-            </li>
-          </ul>
-        </div>
-        <img
-          src="./assets/icons/gear-icon.png"
-          alt="gear-icon"
-          class="settings__icon"
-        />
-      </div>
+      <div class="weather__wind"></div>
+      <div class="weather__humidity"></div>
+    </div>
+  </div>
+</header>
+<main class="main">
+  <time class="time"></time>
+  <date class="date"></date>
+  <div class="greeting__container">
+    <p class="greeting"></p>
+    <input class="greeting__input" type="text" placeholder="[Enter name]"/>
+  </div>
+  <div class="slider-icons">
+    <button class="slider-icon slide-prev"></button>
+    <button class="slider-icon slide-next"><span class=""></span></button>
+  </div>
+</main>
+<footer class="footer">
+  <img
+    src="./assets/icons/gear-icon.png"
+    alt="gear-icon"
+    class="settings__icon"
+  />
+  <div class="settings">
 
-      <div class="quotes closed">
-        <img src="./assets/svg/reload.svg" alt="reload-button" class="reload" />
-        <p class="quote"></p>
-        <p class="author"></p>
+    <ul class="settings__items">
+      <li class="settings__item">
+        <label class="label__input-audio"
+        ><input
+          class="settings__checkbox checkbox-audio"
+          type="checkbox"
+          checked
+        />
+          <span class="checkbox"></span><span>Audio</span></label
+        >
+      </li>
+      <li class="settings__item">
+        <label class="label__input-weather"
+        ><input
+          class="settings__checkbox checkbox-weather"
+          type="checkbox"
+          checked
+        />
+          <span class="checkbox"></span><span>Weather</span></label
+        >
+      </li>
+      <li class="settings__item">
+        <label class="label__input-quotes">
+          <input
+            class="settings__checkbox checkbox-quotes"
+            type="checkbox"
+            checked
+          /><span class="checkbox"></span><span>Quotes</span></label
+        >
+      </li>
+    </ul>
+
+  </div>
+  <div class="quotes closed">
+    <img src="./assets/svg/reload.svg" alt="reload-button" class="reload"/>
+    <p class="quote"></p>
+    <p class="author"></p>
+  </div>
+  <div class="todo-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="todo">
+    <div class="todo__wrapper">
+      <div class="todo__input-container">
+        <label>
+          <input class="todo__add-input" type='text' placeholder="Add item">
+        </label>
+        <button class="todo__add-button" type="submit">Add</button>
+        <button class="todo__delete-button" type="submit">x</button>
       </div>
-    </footer>
-    <script src="index.js"></script>
-  </body>
+    </div>
+  </div>
+</footer>
+<div class="popup"></div>
+<script src="./styles/components/to-do-list/to-do.js"></script>
+<script src="index.js"></script>
+</body>
 </html>

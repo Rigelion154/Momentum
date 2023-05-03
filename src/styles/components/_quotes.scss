@@ -1,7 +1,7 @@
 .reload {
   max-width: 32px;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-top: 20px;
   transition: transform ease 1s;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   @media (max-width: 920px) {
@@ -16,15 +16,19 @@
   align-items: center;
   justify-content: center;
   row-gap: 10px;
-  overflow: hidden;
-  transition: opacity ease-in 0.5s;
+  transition: all ease-in 0.5s;
   @media (max-width: 920px) {
     font-size: 12px;
     row-gap: 5px;
   }
   &.closed {
-    width: 0;
-    height: 0;
     opacity: 0;
   }
+}
+.quote {
+  min-height: 25%;
+  margin-top: auto;
+}
+.author {
+  margin-bottom: auto;
 }

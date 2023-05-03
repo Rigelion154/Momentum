@@ -71,13 +71,15 @@ function setBackgroundImage() {
   img.onload = () => {
     document.body.style.backgroundImage = `url(${img.src})`;
   };
+
 }
+
 
 function getSlideNext() {
   RANDOM_NUMBER++;
   if (RANDOM_NUMBER > 20) RANDOM_NUMBER = 1;
   setBackgroundImage();
-}
+  }
 
 function getSlidePrev() {
   RANDOM_NUMBER--;
@@ -102,7 +104,7 @@ function showTime() {
   showDate();
   showTimeOfDay();
   setTimeout(showTime, 1000);
-}
+  }
 
 /** Date **/
 
@@ -416,7 +418,7 @@ function removeButton(button) {
 // }
 
 function settingsHandler() {
-  const div = document.querySelector(".settings__menu");
+  const div = document.querySelector(".settings");
   const gear = document.querySelector(".settings__icon");
   document.addEventListener("click", (e) => {
     const withinBoundaries = e.composedPath().includes(div);
@@ -424,6 +426,8 @@ function settingsHandler() {
     if (withinBoundariesGear) {
       gear.classList.toggle("rotate");
       div.classList.toggle("open");
+     //  if(document.querySelector('.settings__icon').classList.contains('hide')) document.querySelector('.settings__icon').classList.remove('hide')
+     // else document.querySelector('.settings__icon').classList.add('hide')
     } else if (div.classList.contains("open")) {
       if (!withinBoundaries) {
         gear.classList.toggle("rotate");

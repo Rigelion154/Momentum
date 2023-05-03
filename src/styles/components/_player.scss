@@ -3,6 +3,7 @@
   flex-direction: column;
   row-gap: 15px;
   padding-top: 15px;
+  transition: opacity 1s;
   @media (max-width: 920px) {
     flex-direction: row;
     column-gap: 20px;
@@ -13,10 +14,8 @@
     flex-direction: column;
   }
   &.closed {
-    width: 0;
-    height: 0;
     opacity: 0;
-  }
+   }
 }
 
 .play-list {

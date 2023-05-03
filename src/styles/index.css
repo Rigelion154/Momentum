@@ -187,6 +187,101 @@ legend {
 
 /** Layouts **/
 /** Components **/
+.todo {
+  position: fixed;
+  width: 0px;
+  height: 0px;
+  bottom: 0;
+  right: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 1;
+  transition: all 1s;
+  opacity: 0;
+}
+.todo.open {
+  width: 324px;
+  height: 300px;
+  opacity: 1;
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.popup.open {
+  display: block;
+}
+
+.todo-icon {
+  position: absolute;
+  bottom: 9%;
+  right: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  row-gap: 10px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 2;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.todo-icon span {
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 5px;
+  background: #fff;
+}
+.todo-icon span:before {
+  content: "";
+  display: block;
+  position: absolute;
+  border: 3px solid #fff;
+  width: 10px;
+  height: 10px;
+  transform: translate(-150%, -25%);
+}
+.todo-icon span:last-child:before {
+  content: "";
+  display: block;
+  position: absolute;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translate(-150%, -25%);
+}
+
+.todo__wrapper {
+  padding: 12px;
+  width: 300px;
+  height: 276px;
+  display: flex;
+  border-radius: 10px;
+  background: rgba(211, 211, 211, 0.6);
+}
+
+.todo__close {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+
+.todo__add-input {
+  border: 1px solid #fff;
+}
+
 .time {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -322,7 +417,7 @@ legend {
   flex-direction: column;
   row-gap: 10px;
   align-items: flex-start;
-  overflow: hidden;
+  transition: opacity 1s;
 }
 @media screen and (max-width: 920px) {
   .weather {
@@ -337,8 +432,6 @@ legend {
   }
 }
 .weather.closed {
-  width: 0;
-  height: 0;
   opacity: 0;
 }
 
@@ -352,6 +445,7 @@ legend {
   .weather__input {
     font-size: 13px;
     row-gap: 7px;
+    align-items: center;
   }
 }
 
@@ -389,13 +483,14 @@ legend {
   .weather__sity {
     max-width: 130px;
     font-size: 14px;
+    text-align: center;
   }
 }
 
 .reload {
   max-width: 32px;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-top: 20px;
   transition: transform ease 1s;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -413,8 +508,7 @@ legend {
   align-items: center;
   justify-content: center;
   row-gap: 10px;
-  overflow: hidden;
-  transition: opacity ease-in 0.5s;
+  transition: all ease-in 0.5s;
 }
 @media (max-width: 920px) {
   .quotes {
@@ -423,9 +517,16 @@ legend {
   }
 }
 .quotes.closed {
-  width: 0;
-  height: 0;
   opacity: 0;
+}
+
+.quote {
+  min-height: 25%;
+  margin-top: auto;
+}
+
+.author {
+  margin-bottom: auto;
 }
 
 .player {
@@ -433,6 +534,7 @@ legend {
   flex-direction: column;
   row-gap: 15px;
   padding-top: 15px;
+  transition: opacity 1s;
 }
 @media (max-width: 920px) {
   .player {
@@ -448,8 +550,6 @@ legend {
   }
 }
 .player.closed {
-  width: 0;
-  height: 0;
   opacity: 0;
 }
 
@@ -515,23 +615,24 @@ legend {
   color: #fff;
 }
 
-.settings__menu {
-  position: absolute;
-  left: 1%;
-  bottom: 5%;
+.settings {
+  position: fixed;
   width: 0px;
   height: 0px;
-  background: rgba(211, 211, 211, 0.6);
-  border-radius: 20px;
+  bottom: 0;
+  left: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 1;
+  transition: all 1s;
   opacity: 0;
-  transition: all ease-in 0.5s;
-  padding: 20px;
-  overflow: hidden;
 }
-.settings__menu.open {
+.settings.open {
   opacity: 1;
-  width: 200px;
-  height: 145%;
+  width: 324px;
+  height: 300px;
 }
 
 .settings__icon {
@@ -542,24 +643,37 @@ legend {
   transition: transform ease 1s;
   max-width: 40px;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  z-index: 2;
 }
 @media screen and (max-width: 450px) {
   .settings__icon {
     max-width: 30px;
   }
 }
+.settings__icon.hide {
+  z-index: 0;
+}
 
 .settings__items {
-  font-size: 28px;
-  color: #fff;
-}
-.settings__items.open {
-  height: 100%;
+  padding: 12px;
+  width: 300px;
+  height: 276px;
+  font-size: 22px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  border-radius: 10px;
+  background: rgba(211, 211, 211, 0.6);
 }
 
 .settings__item {
   text-align: start;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.settings__item label {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
 }
 
 .settings__checkbox {
@@ -574,9 +688,8 @@ legend {
   height: 20px;
   border-radius: 10px;
   border: 2px solid #fff;
-  transform: translate(-10px, 0px);
+  margin-right: 10px;
 }
-
 .checkbox::before {
   position: absolute;
   display: block;
@@ -584,7 +697,7 @@ legend {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  background: lightgreen;
+  background: #fff;
   top: 50%;
   left: 50%;
   transform: translate(-110%, -50%);

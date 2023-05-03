@@ -1,0 +1,98 @@
+.todo {
+  position: fixed;
+  width: 0px;
+  height: 0px;
+  bottom: 0;
+  right: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 1;
+  transition: all 1s;
+  opacity: 0;
+
+  &.open {
+    width: 324px;
+    height: 300px;
+    opacity: 1;
+  }
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  &.open {
+    display: block;
+  }
+}
+
+.todo-icon {
+  position: absolute;
+  bottom: 9%;
+  right: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  row-gap: 10px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  z-index: 2;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.todo-icon span {
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 5px;
+  background: $color-primary;
+
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    border: 3px solid #fff;
+    width: 10px;
+    height: 10px;
+    transform: translate(-150%, -25%);
+  }
+
+  &:last-child:before {
+    content: "";
+    display: block;
+    position: absolute;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    transform: translate(-150%, -25%);
+  }
+}
+
+.todo__wrapper {
+  padding: 12px;
+  width: 300px;
+  height: 276px;
+  display: flex;
+  border-radius: 10px;
+  background: $color-secondary-mod;
+}
+
+.todo__close {
+  width: 50px;
+  height: 50px;
+  border: 1px solid $color-primary;
+  border-radius: 50%;
+}
+
+.todo__add-input {
+  border: 1px solid $color-primary;
+}
