@@ -118,12 +118,15 @@
   <div class="todo">
     <div class="todo__wrapper">
       <div class="todo__input-container">
-        <label>
-          <input class="todo__add-input" type='text' placeholder="Add item">
+        <label class="todo__add-label">
+          <input class="todo__add-input task-input" type='text' placeholder="Add item">
+          <button class="todo__add-button button" type="submit">Add</button>
         </label>
-        <button class="todo__add-button" type="submit">Add</button>
-        <button class="todo__delete-button" type="submit">x</button>
       </div>
+      <div class="todo__current-task">
+        <h4 class="todo__current-title">ToDo</h4>
+      </div>
+      <ul class="todo__current-list"></ul>
     </div>
   </div>
 </footer>

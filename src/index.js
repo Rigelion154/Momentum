@@ -408,15 +408,6 @@ function removeButton(button) {
 
 /** Settings */
 
-// function settingsHandler() {
-//   const gear = document.querySelector(".settings__icon");
-//   gear.addEventListener("click", () => {
-//     gear.classList.toggle("rotate");
-//     document.querySelector(".settings__menu").classList.toggle("open");
-//     document.querySelector(".settings__items").classList.toggle("open");
-//   });
-// }
-
 function settingsHandler() {
   const div = document.querySelector(".settings");
   const gear = document.querySelector(".settings__icon");
@@ -426,8 +417,8 @@ function settingsHandler() {
     if (withinBoundariesGear) {
       gear.classList.toggle("rotate");
       div.classList.toggle("open");
-     //  if(document.querySelector('.settings__icon').classList.contains('hide')) document.querySelector('.settings__icon').classList.remove('hide')
-     // else document.querySelector('.settings__icon').classList.add('hide')
+      document.querySelector('.todo').classList.remove('open')
+      document.querySelector('.popup').classList.remove('open')
     } else if (div.classList.contains("open")) {
       if (!withinBoundaries) {
         gear.classList.toggle("rotate");

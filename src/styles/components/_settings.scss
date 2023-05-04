@@ -38,14 +38,14 @@
 
 .settings__items {
   padding: 12px;
-  width: 300px;
+  width: 180px;
   height: 276px;
   font-size: 22px;
   display: flex;
   flex-direction: column;
   row-gap: 10px;
   border-radius: 10px;
-  background: $color-secondary-mod;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .settings__item {
