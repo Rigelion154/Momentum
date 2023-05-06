@@ -264,13 +264,19 @@ class ToDo {
   localStorage() {
     this.currentTasksStorage = JSON.parse(localStorage.getItem('currentTasks'))
     console.log(this.currentTasksStorage)
-    this.currentTasksStorage.forEach(el => {
-      this.renderNewTask(el);
-    })
+    if (this.currentTasksStorage) {
+      this.currentTasksStorage.forEach(el => {
+        this.renderNewTask(el);
+      })
+    }
+
     this.doneTasksStorage = JSON.parse(localStorage.getItem('doneTasks'))
-    this.doneTasksStorage.forEach(el => {
-      this.renderDoneTask(el);
-    })
+    if (this.doneTasksStorage) {
+      this.doneTasksStorage.forEach(el => {
+        this.renderDoneTask(el);
+      })
+    }
+
     window.addEventListener("beforeunload", () => {
       localStorage.setItem('currentTasks', JSON.stringify(this.currentTasksStorage));
       localStorage.setItem('doneTasks', JSON.stringify(this.doneTasksStorage));
