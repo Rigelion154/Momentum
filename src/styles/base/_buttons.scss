@@ -1,25 +1,36 @@
 .button {
-    //font-size: 12px;
-    border: 1px solid $color-primary;
-    border-radius: 10px;
-    padding: 2px 10px;
-    &:hover {
-        background: $color-secondary-mod;
+  //font-size: 12px;
+  border: 1px solid $color-primary;
+  border-radius: 5px;
+  padding: 2px 5px;
+
+  &:hover {
+    background: $color-secondary-mod;
+  }
+
+  &__edit {
+    width: 46.2px;
+
+    &.edit-mode {
+      display: none;
     }
-    &__edit {
-        width: 56.2px;
-        &.edit-mode {
-            display: none;
-        }
-        @media (max-width: 570px) {
-            width: 43.39px;
-        }
+
+    @media (max-width: 570px) {
+      width: 43.39px;
     }
-    &__save {
-        &.edit-mode {
-            display: none;
-        }
+  }
+
+  &__save {
+    &.edit-mode {
+      display: none;
     }
-    &__done {
-    }
+
+  }
+  &__delete {
+    margin-right: 5px;
+  }
+
+  &.done {
+    background: $color-secondary-mod;
+  }
 }

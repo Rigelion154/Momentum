@@ -419,6 +419,7 @@ function settingsHandler() {
       div.classList.toggle("open");
       document.querySelector('.todo').classList.remove('open')
       document.querySelector('.popup').classList.remove('open')
+      document.querySelector('.todo-icon').classList.remove('open')
     } else if (div.classList.contains("open")) {
       if (!withinBoundaries) {
         gear.classList.toggle("rotate");
