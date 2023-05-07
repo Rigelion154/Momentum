@@ -262,21 +262,20 @@ class ToDo {
   }
 
   localStorage() {
-    this.currentTasksStorage = JSON.parse(localStorage.getItem('currentTasks'))
-    console.log(this.currentTasksStorage)
-    if (this.currentTasksStorage) {
+
+    if (JSON.parse(localStorage.getItem('currentTasks')).length !== 0) {
+      this.currentTasksStorage = JSON.parse(localStorage.getItem('currentTasks'))
       this.currentTasksStorage.forEach(el => {
         this.renderNewTask(el);
       })
     }
 
-    this.doneTasksStorage = JSON.parse(localStorage.getItem('doneTasks'))
-    if (this.doneTasksStorage) {
+    if (JSON.parse(localStorage.getItem('doneTasks')).length !== 0) {
+      this.doneTasksStorage = JSON.parse(localStorage.getItem('doneTasks'))
       this.doneTasksStorage.forEach(el => {
         this.renderDoneTask(el);
       })
     }
-
     window.addEventListener("beforeunload", () => {
       localStorage.setItem('currentTasks', JSON.stringify(this.currentTasksStorage));
       localStorage.setItem('doneTasks', JSON.stringify(this.doneTasksStorage));
