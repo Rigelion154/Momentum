@@ -51,6 +51,7 @@ window.onload = function () {
   showWeatherItemHandler();
   showQuotesItem();
   showQuotesItemHandler();
+  showTodoItemHandler()
 };
 
 /** Slider **/
@@ -133,36 +134,45 @@ function showTimeOfDay() {
 
 /** Set LocalStorage */
 function setLocalStoragePlugins() {
-  const audioitem = document.querySelector(".checkbox-audio");
-  const weatheritem = document.querySelector(".checkbox-weather");
-  const quotesitem = document.querySelector(".checkbox-quotes");
+  const audioItem = document.querySelector(".checkbox-audio");
+  const weatherItem = document.querySelector(".checkbox-weather");
+  const quotesItem = document.querySelector(".checkbox-quotes");
+  const todoItem = document.querySelector(".checkbox-todo");
 
-  if (audioitem.checked) {
+  if (audioItem.checked) {
     localStorage.setItem("audio", true);
   } else localStorage.setItem("audio", false);
 
-  if (weatheritem.checked) {
+  if (weatherItem.checked) {
     localStorage.setItem("weather", true);
   } else localStorage.setItem("weather", false);
 
-  if (quotesitem.checked) {
+  if (quotesItem.checked) {
     localStorage.setItem("quotes", true);
   } else localStorage.setItem("quotes", false);
+
+  if (todoItem.checked) {
+    localStorage.setItem("todo", true);
+  } else localStorage.setItem("todo", false);
 }
 
 function getLocalStoragePlugins() {
-  const audioitem = document.querySelector(".checkbox-audio");
-  const weatheritem = document.querySelector(".checkbox-weather");
-  const quotesitem = document.querySelector(".checkbox-quotes");
+  const audioItem = document.querySelector(".checkbox-audio");
+  const weatherItem = document.querySelector(".checkbox-weather");
+  const quotesItem = document.querySelector(".checkbox-quotes");
+  const todoItem = document.querySelector(".checkbox-todo");
 
-  if (localStorage.getItem("audio") === "true") audioitem.checked = true;
-  if (localStorage.getItem("audio") === "false") audioitem.checked = false;
+  if (localStorage.getItem("audio") === "true") audioItem.checked = true;
+  if (localStorage.getItem("audio") === "false") audioItem.checked = false;
 
-  if (localStorage.getItem("weather") === "true") weatheritem.checked = true;
-  if (localStorage.getItem("weather") === "false") weatheritem.checked = false;
+  if (localStorage.getItem("weather") === "true") weatherItem.checked = true;
+  if (localStorage.getItem("weather") === "false") weatherItem.checked = false;
 
-  if (localStorage.getItem("quotes") === "true") quotesitem.checked = true;
-  if (localStorage.getItem("quotes") === "false") quotesitem.checked = false;
+  if (localStorage.getItem("quotes") === "true") quotesItem.checked = true;
+  if (localStorage.getItem("quotes") === "false") quotesItem.checked = false;
+
+  if (localStorage.getItem("todo") === "true") todoItem.checked = true;
+  if (localStorage.getItem("todo") === "false") todoItem.checked = false;
 }
 
 function localStoragePluginsHandler() {
@@ -447,6 +457,12 @@ function showQuotesItemHandler() {
     .addEventListener("click", showQuotesItem);
 }
 
+function showTodoItemHandler() {
+  document
+    .querySelector(".label__input-todo")
+    .addEventListener("click", showTodoItem);
+}
+
 function showAudioItem() {
   if (!document.querySelector(".checkbox-audio").checked) {
     document.querySelector(".player").classList.add("closed");
@@ -463,4 +479,10 @@ function showQuotesItem() {
   if (!document.querySelector(".checkbox-quotes").checked) {
     document.querySelector(".quotes").classList.add("closed");
   } else document.querySelector(".quotes").classList.remove("closed");
+}
+
+function showTodoItem() {
+  if (!document.querySelector(".checkbox-todo").checked) {
+    document.querySelector(".todo-icon").classList.add("closed");
+  } else document.querySelector(".todo-icon").classList.remove("closed");
 }
