@@ -263,14 +263,14 @@ class ToDo {
 
   localStorage() {
 
-    if (JSON.parse(localStorage.getItem('currentTasks')).length !== 0) {
+    if (JSON.parse(localStorage.getItem('currentTasks')).length !== 0 || localStorage.getItem('currentTasks') !== null) {
       this.currentTasksStorage = JSON.parse(localStorage.getItem('currentTasks'))
       this.currentTasksStorage.forEach(el => {
         this.renderNewTask(el);
       })
     }
 
-    if (JSON.parse(localStorage.getItem('doneTasks')).length !== 0) {
+    if (JSON.parse(localStorage.getItem('doneTasks')).length !== 0 ||localStorage.getItem('doneTasks') !== null ) {
       this.doneTasksStorage = JSON.parse(localStorage.getItem('doneTasks'))
       this.doneTasksStorage.forEach(el => {
         this.renderDoneTask(el);
